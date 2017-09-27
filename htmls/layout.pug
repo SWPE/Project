@@ -1,0 +1,23 @@
+mixin deployScripts(list)
+	each source in list
+		script(src=source)
+mixin deployStyles(list)
+	each source in list
+		link(rel="stylesheet" href=source type="text/css")
+
+- var sriptsSrc = ["../scripts/jquery-3.2.1.min.js", "../scripts/bootstrap.min.js", "../scripts/app.js"];
+- var stylesSrc = ["../styles/bootstrap-reboot.min.css", "../styles/bootstrap-grid.min.css", "../styles/bootstrap.min.css", "../styles/main.css"];
+- var title = "SomeTitle";
+
+
+html
+	head
+		title #{title}
+		block insertion
+			+deployScripts(sriptsSrc)
+			+deployStyles(stylesSrc)
+	body
+		block content
+		block foot
+			footer
+				p SomeFooter
