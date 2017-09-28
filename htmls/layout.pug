@@ -4,6 +4,18 @@ mixin deployScripts(list)
 mixin deployStyles(list)
 	each source in list
 		link(rel="stylesheet" href=source type="text/css")
+mixin makeHeaderAndNav(menu, pageName)
+	header
+		nav
+			ul
+				each point in menu
+					li
+						a(href=point.href)=point.name
+	section
+		header
+			h1=pageName
+
+- var menu = [{name:"Главная", href:"index.html"},{name:"Лекции", href:"lectures.html"},{name:"Домашние задания", href:"homeworks.html"},{name:"Учебники", href:"books.html"},{name:"Обсуждения", href:"forum.html"}];
 
 - var sriptsSrc = ["../scripts/jquery-3.2.1.min.js", "../scripts/bootstrap.min.js", "../scripts/app.js"];
 - var stylesSrc = ["../styles/bootstrap-reboot.min.css", "../styles/bootstrap-grid.min.css", "../styles/bootstrap.min.css", "../styles/main.css"];
@@ -16,6 +28,7 @@ html
 		block insertion
 			+deployScripts(sriptsSrc)
 			+deployStyles(stylesSrc)
+		meta(charset="utf-8")
 	body
 		block content
 		block foot
