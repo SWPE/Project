@@ -1,7 +1,15 @@
 extends layout.pug
 block content
+	- var persons = [{id:"13", name:"Дима Лукашов", number:"0968413136", isComing:true}]
+	//isComing defines if person is coming to the next event or not. id is number in the journal
 	+makeHeaderAndNav(menu, "Главная")
 	article
 		header
-			h2 Контент
-		p Make some content here
+			h2 ПЗПИ-17-3
+		each person in persons
+			div.person
+				span #{person.id} 
+				span #{person.name} 
+				span #{person.number} 
+				if person.isComing
+					span В деле
