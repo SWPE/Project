@@ -6,11 +6,16 @@ mixin deployStyles(list)
 		link(rel="stylesheet" href=source type="text/css")
 mixin makeHeaderAndNav(menu, pageName)
 	header
-		nav
-			ul
-				each point in menu
-					li
-						a(href=point.href)=point.name
+		nav.navbar-nav.navbar-fixed-top.navbar-inverse
+			div.container
+				div.navbar-header
+					a(href='#').navbar-brand Пзпи 17-3
+				div
+					ul.nav.navbar-nav.navbar-right
+						each point in menu
+							li
+								a(href=point.href)=point.name 
+				
 	section
 		header
 			h1=pageName
@@ -18,7 +23,7 @@ mixin makeHeaderAndNav(menu, pageName)
 - var menu = [{name:"Главная", href:"index.html"},{name:"Лекции", href:"lectures.html"},{name:"Домашние задания", href:"homeworks.html"},{name:"Учебники", href:"books.html"},{name:"Встречи", href:"meetings.html"}];
 
 - var sriptsSrc = ["../scripts/jquery-3.2.1.min.js", "../scripts/bootstrap.min.js", "../scripts/app.js"];
-- var stylesSrc = ["../styles/bootstrap-reboot.min.css", "../styles/bootstrap-grid.min.css", "../styles/bootstrap.min.css", "../styles/main.css"];
+- var stylesSrc = ["../styles/bootstrap.min.css", "../styles/main.css"];
 - var title = "SomeTitle";
 
 
