@@ -7,11 +7,10 @@ block content
 		header
 			h2 ПЗПИ-17-3
 		each person in persons
-			div.person
-				span #{person.id} 
-				span #{person.name} 
-				span #{person.number} 
-				if person.isComing
-					span В деле
-//Made some changes
-//<Script>
+			div.row
+				div.col-lg-1
+					span #{person.id} 
+					span #{person.name} 
+					span #{person.number} 
+					if person.isComing
+						span В деле
