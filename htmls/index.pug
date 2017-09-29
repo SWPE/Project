@@ -1,11 +1,10 @@
 extends layout.pug
 block content
-	- var persons = [{id:"13", name:"Дима Лукашов", number:"0968413136", isComing:true}]
 	//isComing defines if person is coming to the next event or not. id is number in the journal
 	+makeHeaderAndNav(menu, "Главная")
 	article
 		//header for carousel
-		each person in persons
+		each person in people
 			div.row
 				div.col-lg-12
 					div.col-lg-3

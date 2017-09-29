@@ -15,9 +15,9 @@ block content
 	form(name="newLection" method="post")
 		p Добавить новую информацию
 		p Название предмета: 
-			input(type="text")
+			input(type="text" form="newLection")
 		p Описание файла: 
-			input(type="text")
+			input(type="text" form="newLection")
 		p Прикрепить файл
-			input(type="file")
-		input(type="submit" value="Добавить информацию")
+			input(type="file" form="newLection")
+		input(type="submit" value="Добавить информацию" form="newLection")
