@@ -8,7 +8,7 @@ mixin makeHeaderAndNav(menu, pageName)
 	header
 		nav.navbar-nav.navbar-fixed-top.navbar-inverse
 			div.container
-				div.navbar-header
+				div.navbar-header.navbar-left
 					a(href='#').navbar-brand Пзпи 17-3
 				div
 					ul.nav.navbar-nav.navbar-right
@@ -16,9 +16,6 @@ mixin makeHeaderAndNav(menu, pageName)
 							li
 								a(href=point.href)=point.name 
 				
-	section
-		header
-			h1=pageName
 
 - var menu = [{name:"Главная", href:"index.html"},{name:"Лекции", href:"lectures.html"},{name:"Домашние задания", href:"homeworks.html"},{name:"Учебники", href:"books.html"},{name:"Встречи", href:"meetings.html"}];
 
@@ -38,4 +35,4 @@ html
 		block content
 		block foot
 			footer
-				p SomeFooter
+				// p SomeFooter
