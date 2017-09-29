@@ -4,13 +4,16 @@ block content
 	//isComing defines if person is coming to the next event or not. id is number in the journal
 	+makeHeaderAndNav(menu, "Главная")
 	article
-		header
-			h2 ПЗПИ-17-3
+		//header for carousel
 		each person in persons
 			div.row
-				div.col-lg-1
-					span #{person.id} 
-					span #{person.name} 
-					span #{person.number} 
-					if person.isComing
-						span В деле
+				div.col-lg-12
+					div.col-lg-3
+						span #{person.id}
+					div.col-lg-3
+						span #{person.name}
+					div.col-lg-3
+						span #{person.number} 
+					div.col-lg-3
+						if person.isComing
+							span В деле
