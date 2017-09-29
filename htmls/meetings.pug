@@ -1,3 +1,31 @@
 extends layout.pug
 block content
 	+makeHeaderAndNav(menu, "События")
+	//- var meeting = {place:"Secret Place", date:"2000-00-00", description:"Где собираемся, как добираемся?" }
+	article
+		header
+			h1 Информация про ближайшую встречу
+	if meeting/*Uncomment var meeting to see another version of page*/
+		article
+			header
+				h2 Встреча в #{meeting.place} #{meeting.date}
+			p #{meeting.description}
+			p На встречу идут:
+				ul
+					each person in people
+						if person.isComing
+							li
+								span #{person.name}  
+								span #{person.number} 
+								span Будет
+			button(name="makePassed") Отметить как прошедшую
+	else if !meeting
+		form(name="newMeeting" method="post")
+			p Добавить встречу
+			p Где? 
+				input(type="text" form="newMeeting" name="place")
+			p Когда? 
+				input(type="date" form="newMeeting" name="date")
+			p Где собираемся, как добираемся? 
+				textarea(form="newMeeting" name="description")
+			input(type="submit" form="newMeeting" value="Создать встречу")

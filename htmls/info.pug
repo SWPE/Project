@@ -1,0 +1,27 @@
+extends layout.pug
+block content
+	+makeHeaderAndNav(menu, "Материалы")
+	- var data = [{name:"Test", text:"Lorem ipsum", files:[{source:"#", name:"Test"}], date:"2000-00-00"}];
+
+	article
+		header
+			h1 Инфа
+		p Здесь размещена разная полезная информация
+		ul
+			each info in data
+				li
+					article
+						header
+							h2 #{info.name}
+						p #{info.text}
+						each file in info.files
+							a(href=file.source) #{file.name}
+	form(name="newInfo" method="post")
+		p Добавить новую инфу: 
+		p Название инфы: 
+			input(type="text" name="name", form="newInfo")
+		p Информация в текстовом виде(если есть): 
+			textarea(name="text", form="newInfo")
+		p Добавить файлы:  
+			input(type="file" name="fileDotName" form="newInfo")
+			//TODO make for lots of files

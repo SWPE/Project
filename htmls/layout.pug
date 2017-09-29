@@ -6,20 +6,28 @@ mixin deployStyles(list)
 		link(rel="stylesheet" href=source type="text/css")
 mixin makeHeaderAndNav(menu, pageName)
 	header
-		nav
-			ul
-				each point in menu
-					li
-						a(href=point.href)=point.name
-	section
+		nav.navbar-nav.navbar-fixed-top.navbar-inverse
+			div.container
+				div.navbar-header.navbar-left
+					a(href='#').navbar-brand ПЗПИ-17-3
+				div
+					ul.nav.navbar-nav.navbar-right
+						button Регистрация
+						each point in menu
+							li
+								a(href=point.href)=point.name
+mixin addTypicalArticle(headerText, text)
+	article
 		header
-			h1=pageName
+			h1 #{headerText}
+		p #{text}			
 
-- var menu = [{name:"Главная", href:"index.html"},{name:"Лекции", href:"lectures.html"},{name:"Домашние задания", href:"homeworks.html"},{name:"Учебники", href:"books.html"},{name:"Встречи", href:"meetings.html"}];
+- var menu = [{name:"Главная", href:"index.html"},{name:"Информация", href:"lectures.html"},{name:"Домашние задания", href:"homeworks.html"},{name:"Полезная инфа", href:"info.html"},{name:"Встречи", href:"meetings.html"}];
 
 - var sriptsSrc = ["../scripts/jquery-3.2.1.min.js", "../scripts/bootstrap.min.js", "../scripts/app.js"];
-- var stylesSrc = ["../styles/bootstrap-reboot.min.css", "../styles/bootstrap-grid.min.css", "../styles/bootstrap.min.css", "../styles/main.css"];
+- var stylesSrc = ["../styles/bootstrap.min.css", "../styles/main.css"];
 - var title = "SomeTitle";
+- var people = [{name:"Дима Лукашов", number:"0968413136", isComing:true, id:"13"},{name:"Денис Тесленко", number:"0000000000", isComing:true, id:"00"}];
 
 
 html
@@ -33,4 +41,4 @@ html
 		block content
 		block foot
 			footer
-				p SomeFooter
+				// p SomeFooter
