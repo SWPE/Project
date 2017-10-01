@@ -2,23 +2,49 @@ extends layout.pug
 block content
 	+makeHeaderAndNav(menu, "Лекции")
 	- var lectures = [{subject:"Opi", fileName:"Pres.ppt", source:"#", date:"2000-00-00", description:"Description"}];
-	article
-		header
+		html
+		head
+		body
 			.container
-				h1 Лекции
-			p Здесь размещена полезная информация по предметам:
-			ul
-				each lecture in lectures
-					li
-						span #{lecture.subject} 
-						a(href=lecture.source) #{lecture.fileName} 
-						span #{lecture.description}
-		form(name="newLection" method="post")
-			p Добавить новую информацию
-			p Название предмета: 
-				input(type="text" form="newLection")
-			p Описание файла: 
-				input(type="text" form="newLection")
-			p Прикрепить файл
-				input(type="file" form="newLection")
-			input(type="submit" value="Добавить информацию" form="newLection")
+				.row
+					h1 Лекции
+					p Здесь размещена полезная информация по предметам:
+					#collapse-group.panel-group
+						.panel
+							.panel-heading
+								a(data-toggle='collapse', data-parent='#collapse-group', href='#el1') Cписок файлов
+							#el1.collapse
+								.panel-body
+									table.table
+										thead
+											tr
+												th Subject
+												th File
+												th Description
+										tbody
+											tr
+												each lecture in lectures
+													td
+														span #{lecture.subject}
+													td 
+														a(href=lecture.source) #{lecture.fileName}
+													td 
+														span #{lecture.description}
+				.container
+					form(role='form' name="newLection" method="post").form-horizontal
+						.form-group
+							label(for='subject').control-label.col-md-2 Название предмета:
+							.col-md-3
+								input(type="subject" class="form-control" form="newLection" id='subject' placeholder='Введите название')
+						.form-group
+							label(for='subject').control-label.col-md-2 Описание файла:
+							.col-md-3
+								input(type="description" class="form-control" form="newLection" id='description' placeholder='Введите описание')
+						.form-group
+							label(for='file').control-label.col-md-2 Прикрепить файл:
+							.col-md-3
+								input(type="file" form="newLection" id='file')
+								
+						button(type=button).btn.btn-success
+							|Добавить информацию
+
