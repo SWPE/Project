@@ -1,0 +1,24 @@
+extends layout.pug
+block content
+	+makeHeaderAndNav(menu, "Лекции")
+	- var lectures = [{subject:"Opi", fileName:"Pres.ppt", source:"#", date:"2000-00-00", description:"Description"}];
+	article
+		header
+			.container
+				h1 Лекции
+			p Здесь размещена полезная информация по предметам:
+			ul
+				each lecture in lectures
+					li
+						span #{lecture.subject} 
+						a(href=lecture.source) #{lecture.fileName} 
+						span #{lecture.description}
+		form(name="newLection" method="post")
+			p Добавить новую информацию
+			p Название предмета: 
+				input(type="text" form="newLection")
+			p Описание файла: 
+				input(type="text" form="newLection")
+			p Прикрепить файл
+				input(type="file" form="newLection")
+			input(type="submit" value="Добавить информацию" form="newLection")

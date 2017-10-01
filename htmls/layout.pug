@@ -1,0 +1,42 @@
+mixin deployScripts(list)
+	each source in list
+		script(src=source)
+mixin deployStyles(list)
+	each source in list
+		link(rel="stylesheet" href=source type="text/css")
+mixin makeHeaderAndNav(menu, pageName)
+	header
+		nav.navbar-nav.navbar-fixed-top.navbar-default
+			div.container
+				div.navbar-header.navbar-left
+					a(href='#').navbar-brand PZPI 17-3
+				div
+					ul.nav.navbar-nav.navbar-right
+						each point in menu
+							li
+								a(href=point.href)=point.name 
+				
+mixin addTypicalArticle(headerText, text)
+	article
+		header
+			h1 #{headerText}
+		p #{text}
+- var menu = [{name:"Main Page", href:"index.html"},{name:"Lectures", href:"lectures.html"},{name:"Homework", href:"homeworks.html"},{name:"Info", href:"info.html"},{name:"Meetings", href:"meetings.html"}];
+
+- var sriptsSrc = ["../scripts/jquery-3.2.1.min.js", "../scripts/bootstrap.min.js", "../scripts/app.js"];
+- var stylesSrc = ["../styles/bootstrap.min.css", "../styles/main.css"];
+- var title = "SomeTitle";
+- var people = [{id:"1",name:"Авдеев Алексей",number:"095-473-06-68",isComing:true}];
+
+html
+	head
+		title #{title}
+		block insertion
+			+deployScripts(sriptsSrc)
+			+deployStyles(stylesSrc)
+		meta(charset="utf-8")
+	body
+		block content
+		block foot
+			footer
+				// p SomeFooter
