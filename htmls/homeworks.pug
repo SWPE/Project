@@ -2,28 +2,65 @@ extends layout.pug
 block content
 	+makeHeaderAndNav(menu, "Домашние задания")
 	- var homeworks = [{subject:"OPI", whenGiven:"2000-00-00", whenPass:"2000-00-01", textDescription:"sdasd", fileName:"test.ppt", source:"#"}];
+	link(rel='icon', href='/favicon.ico', type='image/x-icon')
 	article
 		header
-			h1 Домашние задания
-		p Подробная информация о домашнем задании:
-		ul
-			each hm in homeworks
-				li
-					span #{hm.subject} #{hm.whenGiven} #{hm.whenPass} 
-					if hm.textDescription
-						span #{hm.textDescription} 
-					if hm.fileName
-						a(href=hm.source) #{hm.fileName}
-	form(name="newHomework" method="post")
-		p Добавить новое домашние задание
-		p Предмет: 
-			input(type="text" name="subject" form="newHomework")
-		p Дата выдачи: 
-			input(type="date" placeholder="YYYY-MM-DD" name="whenGiven" form="newHomework")
-		p Дата здачи: 
-			input(type="date" placeholder="YYYY-MM-DD" name="whenPass" form="newHomework")
-		p Текст задания(описание): 
-			textarea(form="newHomework" placeholder="Что же задали?")
-		p Файл с заданием(фотка и т.д.)
-			input(type="file" name="fileName" form="newHomework")
-		input(type="submit" value="Добавить задание" form="newHomeWork")
+			.container
+				.row
+					h1 Homework
+					p Details of the homework:
+						#collapse-group.panel-group
+							.panel
+								.panel-heading
+									a(data-toggle='collapse', data-parent='#collapse-group', href='#el1') List of files
+								#el1.collapse
+									.panel-body
+										table.table
+											thead
+						
+												tr
+													th Subject
+													th Date of issue
+													th Submission date
+													th Task text
+													th File
+											tbody
+												each hm in homeworks
+													tr
+														td 
+															span #{hm.subject}
+														td
+															span #{hm.whenGiven}
+														td 
+															span #{hm.whenPass}
+														th
+															if hm.textDescription
+																span #{hm.textDescription}
+														th
+															if hm.fileName
+																a(href=hm.source) #{hm.fileName}
+					form(role='form' name="newHomeWork" method="post").form-horizontal
+						.form-group
+							label(for='subject').control-label.col-md-2 Subject:
+							.col-md-3
+								input(type="subject" class="form-control" form="newHomeWork" id='subject' placeholder='Enter the subject')
+						.form-group
+							label(for='date').control-label.col-md-2 Date of issue:
+							.col-md-3
+								input(type="date" class="form-control" form="newHomeWork" id='date' placeholder='YYYY-MM-DD' name='whenGiven')
+						.form-group
+							label(for='subdate').control-label.col-md-2 Submission date:
+							.col-md-3
+								input(type="date" class="form-control" form="newHomeWork" id='date' placeholder='YYYY-MM-DD' name='whenPass')
+						.form-group
+							label(for='description').control-label.col-md-2 Task text(description):
+							.col-md-3
+								input(type="description" class="form-control" form="newHomeWork" id='description' placeholder='Enter the description')
+						.form-group
+							label(for='file').control-label.col-md-2 Attach file:
+							.col-md-3
+								input(type="file" form="newHomeWork" id='file')
+													
+							button(type=button).btn.btn-success
+								|Add information												
+					
