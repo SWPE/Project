@@ -20,7 +20,11 @@ mixin makeHeaderAndNav(menu, pageName)
 						each point in menu
 							li
 								a(href=point.href)=point.name 
-				
+					form.navbar-form.navbar-right(role='search')
+						.form-group
+							input.form-control(type='text', placeholder='Find')
+							button.btn.btn-default(type='submit') Submit
+
 mixin addTypicalArticle(headerText, text)
 	article
 		header
