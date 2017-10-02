@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 
 #headerwrap {
-    background: url(http://naturewallpapers.biz/wp-content/uploads/2012/04/hq-bridge-wallpaper.jpg) no-repeat  center top;
+    background: url("../img/1.jpg") no-repeat  center top;
     margin-top: -10px;
     padding-top: 20px;
     text-align:center;
