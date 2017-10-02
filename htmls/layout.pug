@@ -9,8 +9,13 @@ mixin makeHeaderAndNav(menu, pageName)
 		nav.navbar-nav.navbar-fixed-top.navbar-default
 			div.container
 				div.navbar-header.navbar-left
+					button(type="button" data-toggle="collapse" data-target="#navbar-collapse").navbar-toggle.collapsed
+						span.sr-only |Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
 					a(href='#').navbar-brand PZPI 17-3
-				div
+				#navbar-collapse.collapse.navbar-collapse
 					ul.nav.navbar-nav.navbar-right
 						each point in menu
 							li
