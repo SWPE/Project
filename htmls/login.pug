@@ -1,3 +1,23 @@
 extends layout.pug
 block content
 	+makeHeaderAndNav(menu, "События")
+	meta(charset='utf-8')
+	meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+	title
+	link(rel='stylesheet', href='../styles/reset.css')
+	link(rel='stylesheet', href='../styles/animate.css')
+	link(rel='stylesheet', href='../styles/styles.css')
+	link(rel='icon', href='../img/favicon.ico', type='image/x-icon')
+	link(rel='shortcut icon', href='../img/favicon.ico', type='image/x-icon')
+	#container
+		form
+			label(for='name') Логин:
+			input(type='name')
+			label(for='username') Пароль:
+			p
+				a(href='#') Забыли пароль?
+			input(type='password')
+			#lower
+				input(type='checkbox')
+				label.check(for='checkbox') Запомнить меня
+				input(type='submit', value='Войти')

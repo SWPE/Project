@@ -14,7 +14,8 @@ mixin makeHeaderAndNav(menu, pageName)
 						span.icon-bar
 						span.icon-bar
 						span.icon-bar
-					a(href='#').navbar-brand PZPI 17-3
+					#navbrand.container
+						img(src="../img/Logotop.png" width="150" height="150") 
 				#navbar-collapse.collapse.navbar-collapse
 					ul.nav.navbar-nav.navbar-right
 						each point in menu
@@ -51,4 +52,3 @@ html
 		block content
 		block foot
 			footer
-				// p SomeFooter
