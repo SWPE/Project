@@ -5,23 +5,51 @@ block content
 
 	article
 		header
-			h1 Инфа
-		p Здесь размещена разная полезная информация
-		ul
-			each info in data
-				li
-					article
-						header
-							h2 #{info.name}
-						p #{info.text}
-						each file in info.files
-							a(href=file.source) #{file.name}
-	form(name="newInfo" method="post")
-		p Добавить новую инфу: 
-		p Название инфы: 
-			input(type="text" name="name", form="newInfo")
-		p Информация в текстовом виде(если есть): 
-			textarea(name="text", form="newInfo")
-		p Добавить файлы:  
-			input(type="file" name="fileDotName" form="newInfo")
-			//TODO make for lots of files
+			.container
+				.row
+					h1 Info
+					p Здесь размещена разная полезная информация:
+						#collapse-group.panel-group
+									.panel
+										.panel-heading
+											a(data-toggle='collapse', data-parent='#collapse-group', href='#el1') List of files
+										#el1.collapse
+											.panel-body
+												table.table
+													thead
+														tr
+															th Name
+															th Info
+															th Files
+															th Date
+													tbody
+														each info in data
+															tr
+																td 
+																	span #{info.name}
+																td
+																	span #{info.text}
+																each file in info.files
+																	td
+																		a(href=file.source) #{file.name}
+																td
+																	span #{info.date}
+									
+				form(role='form' name="newInfo" method="post").form-horizontal
+					p Add new information:
+						.form-group
+							label(for='info').control-label.col-md-2 Info Name:
+							.col-md-3
+								input(type="info" class="form-control" form="newInfo" id='info' placeholder='Enter the info')
+						.form-group
+							label(for='info').control-label.col-md-2 Text info:
+							.col-md-5
+								textarea(type="info" class="form-control" form="newInfo" id='info' placeholder='Enter the text info')
+						.form-group
+							label(for='info').control-label.col-md-2 Add File(s):
+							.col-md-2
+								input(type="file" name="fileDotName" form="newInfo")
+						//TODO make for lots of files
+						.col-md-
+							button(type="submit" form="newInfo").btn.btn-success
+								|Confirm	
