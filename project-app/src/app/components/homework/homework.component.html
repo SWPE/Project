@@ -1,0 +1,59 @@
+<div class="container">
+	<div class="row">
+		<h1>Homework</h1>
+		<p>Details of the homework:
+		<div class="panel-group" id="collapse-group">
+			<div class="panel">
+				<div class="panel-heading"><a data-toggle="collapse" data-parent="#collapse-group" href="#el1">List of files</a></div>
+				<div class="collapse" id="el1">
+					<div class="panel-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Subject</th>
+									<th>Date of issue</th>
+									<th>Submission date</th>
+									<th>Task text</th>
+									<th>File</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let hm of homeworks">
+									<td> <span>{{hm.subject}}</span></td>
+									<td><span>{{hm.whenGiven}}</span></td>
+									<td> <span>{{hm.whenPass}}</span></td>
+									<th><span>{{hm.textDescription}}</span></th>
+									<th><a href={{hm.source}}>{{hm.fileName}}</a></th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+<form class="form-horizontal" role="form" name="newHomeWork" method="post">
+			<div class="form-group">
+				<label class="control-label col-md-2" for="subject">Subject:</label>
+				<div class="col-md-3"><input class="form-control" type="subject" form="newHomeWork" id="subject" placeholder="Enter the subject"/></div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2" for="date">Date of issue:</label>
+				<div class="col-md-3"><input class="form-control" type="date" form="newHomeWork" id="date" placeholder="YYYY-MM-DD" name="whenGiven"/></div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2" for="subdate">Submission date:</label>
+				<div class="col-md-3"><input class="form-control" type="date" form="newHomeWork" id="date" placeholder="YYYY-MM-DD" name="whenPass"/></div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2" for="description">Task text(description):</label>
+				<div class="col-md-3"><input class="form-control" type="description" form="newHomeWork" id="description" placeholder="Enter the description"/></div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2" for="file">Attach file:</label>
+				<div class="col-md-3"><input type="file" form="newHomeWork" id="file"/></div>
+				<button class="btn btn-success" type="submit" form="newHomeWork">Add information												</button>
+			</div>
+		</form>
+	</div>
+</div>
+		

@@ -1,0 +1,74 @@
+
+
+<article>
+	<header>
+		<div class="container">
+			<h1>Information about meetings</h1>
+			<article *ngIf="meeting; else noMeeting">
+				<header>
+					<h2>Встреча в Secret Place 2000-00-00</h2>
+				</header>
+				<p>Где собираемся, как добираемся?</p>
+				<p>На встречу идут:</p>
+				<div class="panel-group" id="collapse-group">
+					<div class="panel">
+						<div class="panel-heading"><a data-toggle="collapse" data-parent="#collapse-group" href="#el1">List of people</a></div>
+						<div class="collapse" id="el1">
+							<div class="panel-body">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Id</th>						
+											<th>Name</th>
+											<th>Number</th>
+											<th>Coming</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let person of people">
+											<td>{{person.id}}</td>
+											<td>{{person.name}}</td>
+											<td>{{person.number}}</td>
+											<td *ngIf="person.isComing; else noComing">Yes</td>
+											<ng-template #noComing><td>No</td></ng-template>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="btn btn-info" name="makePassed">Отметить как прошедшую</button>
+			</article>
+			<ng-template #noMeeting>
+				<form class="form-horizontal" role="form" name="newInfo" method="post">
+					<p>Add new meeting</p>
+					<div class="form-group">
+						<label class="control-label col-md-2" for="info">Place:</label>
+						<div class="col-md-3">
+							<input class="form-control" type="place" form="newMeeting" id="place" placeholder="Enter the place" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-2" for="info">Date:</label>
+						<div class="col-md-5">
+							<textarea class="form-control" type="info" form="newMeeting" id="date" placeholder="Enter the date"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-2" for="info">Где собираемся, как добираемся? :</label>
+						<div class="col-md-2">
+							<textarea type="text" name="description" form="newInfo"></textarea>
+						</div>
+					</div>
+					<!--TODO make for lots of files-->
+					<div class="col-md">
+						<button class="btn btn-success" type="submit" form="newMeeting">Confirm </button>
+					</div>
+				</form>
+			</ng-template>
+		</div>
+	</header>
+</article>
+
+
