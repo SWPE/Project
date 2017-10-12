@@ -7,13 +7,15 @@ import { LecturesComponent } from "./components/lectures/lectures.component";
 import { HomeworkComponent } from "./components/homework/homework.component";
 import { InfoComponent } from "./components/info/info.component";
 import { MeetingsComponent } from "./components/meetings/meetings.component";
+import { LoginComponent } from "./components/login/login.component";
 import { RouterModule, Routes } from "@angular/router";
 const appRoutes: Routes = [
 	{path:"", component:MainPageComponent},
 	{path:"lectures", component:LecturesComponent},
 	{path:"homework", component:HomeworkComponent},
 	{path:"info", component:InfoComponent},
-	{path:"meetings", component:MeetingsComponent}
+	{path:"meetings", component:MeetingsComponent},
+	{path:"login", component:LoginComponent}
 ];
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
 	LecturesComponent,
 	HomeworkComponent,
 	InfoComponent,
-	MeetingsComponent
+	MeetingsComponent,
+	LoginComponent
   ],
   imports: [
 	BrowserModule,

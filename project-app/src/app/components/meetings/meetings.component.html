@@ -4,11 +4,11 @@
 	<header>
 		<div class="container">
 			<h1>Information about meetings</h1>
-			<article>
+			<article *ngIf="meeting; else noMeeting">
 				<header>
-					<h2>Встреча в {{meeting.place}} {{meeting.date}}</h2>
+					<h2>Встреча в Secret Place 2000-00-00</h2>
 				</header>
-				<p>{{meeting.description}}</p>
+				<p>Где собираемся, как добираемся?</p>
 				<p>На встречу идут:</p>
 				<div class="panel-group" id="collapse-group">
 					<div class="panel">
@@ -18,6 +18,7 @@
 								<table class="table">
 									<thead>
 										<tr>
+											<th>Id</th>						
 											<th>Name</th>
 											<th>Number</th>
 											<th>Coming</th>
@@ -25,130 +26,11 @@
 									</thead>
 									<tbody>
 										<tr *ngFor="let person of people">
+											<td>{{person.id}}</td>
 											<td>{{person.name}}</td>
 											<td>{{person.number}}</td>
-											<td *ngIf="person.isComing; else noBlock">Yes</td>
-											<ng-template #noBlock><td>No</td></ng-template>
-										</tr>
-										<tr>
-											<td>Благой Владислав</td>
-											<td>095-097-17-00</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Буданцев Павел</td>
-											<td>099-678-06-58</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Возгрива Анна</td>
-											<td>097-250-50-41</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Волоховский Виталий</td>
-											<td>068-438-87-08</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Гончаров Дмитрий</td>
-											<td>066-185-40-38</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Гулиев Нурал</td>
-											<td>099-781-82-16</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Зинченко Юрий</td>
-											<td>093-130-60-70</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Иваненко Виктория</td>
-											<td>099-018-85-16</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Исаева Эльвира</td>
-											<td>050-555-96-15</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Киевский Александр</td>
-											<td>066-028-60-41</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Кириленко Елена</td>
-											<td>066-599-65-30</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Лукашов Дмитрий</td>
-											<td>096-841-34-36</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Лютова Камила</td>
-											<td>095-716-43-38</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Максименко Даниил</td>
-											<td>099-629-70-91</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Михайленко Роман</td>
-											<td>099-328-54-48</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Осташко Евгений</td>
-											<td>098-213-60-89</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Пилипенко Сергей</td>
-											<td>066-930-04-08</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Сайчишина Наталия</td>
-											<td>099-288-50-26</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Тесленко Денис</td>
-											<td>099-639-14-68</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Титаренко Степан</td>
-											<td>099-402-32-51</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Фрегер Олег</td>
-											<td>095-225-11-99</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Хазратов Назар</td>
-											<td>050-880-92-77</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Ховрат Артём</td>
-											<td>096-424-48-36</td>
-											<td>Yes</td>
-										</tr>
-										<tr>
-											<td>Щербина Анастасия</td>
-											<td>066-055-17-34</td>
-											<td>Yes</td>
+											<td *ngIf="person.isComing; else noComing">Yes</td>
+											<ng-template #noComing><td>No</td></ng-template>
 										</tr>
 									</tbody>
 								</table>
@@ -158,6 +40,33 @@
 				</div>
 				<button class="btn btn-info" name="makePassed">Отметить как прошедшую</button>
 			</article>
+			<ng-template #noMeeting>
+				<form class="form-horizontal" role="form" name="newInfo" method="post">
+					<p>Add new meeting</p>
+					<div class="form-group">
+						<label class="control-label col-md-2" for="info">Place:</label>
+						<div class="col-md-3">
+							<input class="form-control" type="place" form="newMeeting" id="place" placeholder="Enter the place" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-2" for="info">Date:</label>
+						<div class="col-md-5">
+							<textarea class="form-control" type="info" form="newMeeting" id="date" placeholder="Enter the date"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-2" for="info">Где собираемся, как добираемся? :</label>
+						<div class="col-md-2">
+							<textarea type="text" name="description" form="newInfo"></textarea>
+						</div>
+					</div>
+					<!--TODO make for lots of files-->
+					<div class="col-md">
+						<button class="btn btn-success" type="submit" form="newMeeting">Confirm </button>
+					</div>
+				</form>
+			</ng-template>
 		</div>
 	</header>
 </article>
