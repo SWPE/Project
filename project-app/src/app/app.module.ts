@@ -8,8 +8,8 @@ import { HomeworkComponent } from "./components/homework/homework.component";
 import { RouterModule, Routes } from "@angular/router";
 const appRoutes: Routes = [
 	{path:"", component:MainPageComponent},
-	{path:"lectures", component:LecturesComponent}
-	//{path:"homeworks", component:HomeworkComponent}
+	{path:"lectures", component:LecturesComponent},
+	{path:"homework", component:HomeworkComponent}
 ];
 @NgModule({
   declarations: [
