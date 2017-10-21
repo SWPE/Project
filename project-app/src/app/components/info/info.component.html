@@ -1,63 +1,35 @@
-
-
 <div class="container">
-<div class="row">
-	<h1>Info</h1>
-	<p>Здесь размещена разная полезная информация:</p>
-	<div class="panel-group" id="collapse-group">
-		<div class="panel">
-			<div class="panel-heading"><a data-toggle="collapse" data-parent="#collapse-group" href="#el1">List of files</a></div>
-			<div class="collapse" id="el1">
-				<div class="panel-body">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Info</th>
-								<th>Files</th>
-								<th>Date</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let data of info">
-								<td> <span>{{data.name}}</span></td>
-								<td><span>{{data.text}}</span></td>
-								<td>
-									<a *ngFor="let file of data.files" href={{file.source}}>{{file.name}}</a>
-								</td>
-								<td><span>{{data.date}}</span></td>
-							</tr>
-						</tbody>
-					</table>
+	<div class="row">
+		<h1>Info</h1>
+		<p>Здесь размещена разная полезная информация:</p>
+		<div class="panel-group" id="collapse-group">
+			<div class="panel">
+				<div class="panel-heading"><a data-toggle="collapse" data-parent="#collapse-group" href="#el1">List of files</a></div>
+				<div class="collapse" id="el1">
+					<div class="panel-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Info</th>
+									<th>Files</th>
+									<th>Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let data of info">
+									<td> <span>{{data.name}}</span></td>
+									<td><span>{{data.text}}</span></td>
+									<td>
+										<a *ngFor="let file of data.files" href={{file.source}}>{{file.name}}</a>
+									</td>
+									<td><span>{{data.date}}</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<form class="form-horizontal" role="form" name="newInfo" method="post">
-	<p>Add new information:</p>
-	<div class="form-group">
-		<label class="control-label col-md-2" for="info">Info Name:</label>
-		<div class="col-md-3">
-			<input class="form-control" type="info" form="newInfo" id="info" placeholder="Enter the info" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="control-label col-md-2" for="info">Text info:</label>
-		<div class="col-md-5">
-			<textarea class="form-control" type="info" form="newInfo" id="info" placeholder="Enter the text info"></textarea>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="control-label col-md-2" for="info">Add File(s):</label>
-		<div class="col-md-2">
-			<input type="file" name="fileDotName" form="newInfo" />
-		</div>
-	</div>
-	<!--TODO make for lots of files-->
-	<div class="col-md-">
-		<button class="btn btn-success" type="submit" form="newInfo">Confirm </button>
-	</div>
-</form>
-
-
+	<info-form></info-form>
