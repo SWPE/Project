@@ -6,8 +6,11 @@ import { MainPageComponent } from './components/mainPage/mainPage.component';
 import { LecturesComponent } from "./components/lectures/lectures.component";
 import { LecturesFormComponent } from "./components/lectureForm/lecturesForm.component";
 import { HomeworkComponent } from "./components/homework/homework.component";
+import { HomeworkFormComponent } from "./components/homeworkForm/homeworkForm.component";
 import { InfoComponent } from "./components/info/info.component";
+import { InfoFormComponent } from "./components/infoForm/infoForm.component";
 import { MeetingsComponent } from "./components/meetings/meetings.component";
+import { MeetingsFormComponent } from "./components/meetingsForm/meetingsForm.component";
 import { LoginComponent } from "./components/login/login.component";
 import { RouterModule, Routes } from "@angular/router";
 const appRoutes: Routes = [
@@ -27,7 +30,10 @@ const appRoutes: Routes = [
 		InfoComponent,
 		MeetingsComponent,
 		LoginComponent,
-		LecturesFormComponent
+		LecturesFormComponent,
+		HomeworkFormComponent,
+		InfoFormComponent,
+		MeetingsFormComponent
 	],
 	imports: [
 		BrowserModule,

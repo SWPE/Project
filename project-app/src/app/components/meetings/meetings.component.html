@@ -1,5 +1,3 @@
-
-
 <article>
 	<header>
 		<div class="container">
@@ -41,31 +39,7 @@
 				<button class="btn btn-info" name="makePassed">Отметить как прошедшую</button>
 			</article>
 			<ng-template #noMeeting>
-				<form class="form-horizontal" role="form" name="newInfo" method="post">
-					<p>Add new meeting</p>
-					<div class="form-group">
-						<label class="control-label col-md-2" for="info">Place:</label>
-						<div class="col-md-3">
-							<input class="form-control" type="place" form="newMeeting" id="place" placeholder="Enter the place" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-md-2" for="info">Date:</label>
-						<div class="col-md-5">
-							<textarea class="form-control" type="info" form="newMeeting" id="date" placeholder="Enter the date"></textarea>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-md-2" for="info">Где собираемся, как добираемся? :</label>
-						<div class="col-md-2">
-							<textarea type="text" name="description" form="newInfo"></textarea>
-						</div>
-					</div>
-					<!--TODO make for lots of files-->
-					<div class="col-md">
-						<button class="btn btn-success" type="submit" form="newMeeting">Confirm </button>
-					</div>
-				</form>
+				<meeting-form></meeting-form>
 			</ng-template>
 		</div>
 	</header>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InfoFormComponent } from "./../infoForm/infoForm.component"
 
 @Component({
   templateUrl: './info.component.html',
