@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LecturesFormComponent } from "./../lectureForm/lecturesForm.component";
 
 @Component({
 	templateUrl: './lectures.component.html',

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from "./components/app/app.component";
 import { MainPageComponent } from './components/mainPage/mainPage.component';
 import { LecturesComponent } from "./components/lectures/lectures.component";
+import { LecturesFormComponent } from "./components/lectureForm/lecturesForm.component";
 import { HomeworkComponent } from "./components/homework/homework.component";
 import { InfoComponent } from "./components/info/info.component";
 import { MeetingsComponent } from "./components/meetings/meetings.component";
@@ -18,23 +19,24 @@ const appRoutes: Routes = [
 	{path:"login", component:LoginComponent}
 ];
 @NgModule({
-  declarations: [
-	AppComponent,
-    	MainPageComponent,
-	LecturesComponent,
-	HomeworkComponent,
-	InfoComponent,
-	MeetingsComponent,
-	LoginComponent
-  ],
-  imports: [
-	BrowserModule,
-	RouterModule.forRoot(
-	appRoutes,
-	{enableTracing: true}
-)
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		MainPageComponent,
+		LecturesComponent,
+		HomeworkComponent,
+		InfoComponent,
+		MeetingsComponent,
+		LoginComponent,
+		LecturesFormComponent
+	],
+	imports: [
+		BrowserModule,
+		RouterModule.forRoot(
+			appRoutes,
+			{enableTracing: true}
+		)
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
