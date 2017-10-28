@@ -12,6 +12,7 @@ export class MainPageComponent implements OnInit{
 	constructor(private http: HttpServiceProvider){
 	}
 	ngOnInit(){
-		this.people = this.http.getListOfPeople();
+		
+		this.people = this.http.getListOfPeople("http://localhost:4200/assets/people.json");
 	}
 }
