@@ -4,11 +4,11 @@ import { ILecture } from "./../models/ilecture";
 import { IInfo, IInfoFile } from "./../models/iinfo"; 
 import { IMeeting } from "./../models/imeeting";
 export class HttpServiceProvider{
-	listOfPeople:IPerson[];
-	listOfHomewokrs:IHomework[];
-	listOfLectures:ILecture[];
-	listOfInfo:IInfo[];
-	meeting:IMeeting;
+	private listOfPeople:IPerson[];
+	private listOfHomewokrs:IHomework[];
+	private listOfLectures:ILecture[];
+	private listOfInfo:IInfo[];
+	private meeting:IMeeting;
 	meetings;
 	info;
 	lectures;
