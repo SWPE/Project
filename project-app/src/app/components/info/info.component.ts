@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
-import { InfoFormComponent } from "./../infoForm/infoForm.component"
+import { Component, OnInit } from '@angular/core';
+import { InfoFormComponent } from "./../infoForm/infoForm.component";
+import { IInfo, IInfoFile } from "./../../models/iinfo";
+import { HttpServiceProvider } from "./../../services/httpService";
 
 @Component({
   templateUrl: './info.component.html',
-  styleUrls: ['./info.component.css']
+  styleUrls: ['./info.component.css'],
+  providers:[HttpServiceProvider]
 })
-export class InfoComponent {
-	info = [{name:"Test", text:"Lorem ipsum", files:[{source:"#", name:"Test"}], date:"2000-00-00"}];
+export class InfoComponent implements OnInit{
+	info:IInfo[];
+	constructor(private http:HttpServiceProvider){}
+	ngOnInit(){
+		this.info = this.http.getListOfInfo();
+	}
 }
