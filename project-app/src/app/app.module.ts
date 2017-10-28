@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from "./components/app/app.component";
 import { MainPageComponent } from './components/mainPage/mainPage.component';
@@ -43,7 +42,6 @@ const appRoutes: Routes = [
 			appRoutes,
 			{enableTracing: true}
 		),
-		HttpClientModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
