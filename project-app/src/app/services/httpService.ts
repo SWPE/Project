@@ -2,11 +2,14 @@ import { IPerson } from "./../models/iperson";
 import { IHomework } from "./../models/ihomework";
 import { ILecture } from "./../models/ilecture";
 import { IInfo, IInfoFile } from "./../models/iinfo"; 
+import { IMeeting } from "./../models/imeeting";
 export class HttpServiceProvider{
 	listOfPeople:IPerson[];
 	listOfHomewokrs:IHomework[];
 	listOfLectures:ILecture[];
 	listOfInfo:IInfo[];
+	meeting:IMeeting;
+	meetings;
 	info;
 	lectures;
 	homework;
@@ -17,10 +20,12 @@ export class HttpServiceProvider{
 		this.homework = [{subject:"OPI", whenGiven:"2000-00-00", whenPass:"2000-00-01", textDescription:"sdasd", fileName:"test.ppt", source:"#"}];
 		this.lectures = [{subject:"Opi", fileName:"Pres.ppt", source:"#", date:"2000-00-00", description:"Description"}];
 		this.info = [{name:"Test", text:"Lorem ipsum", files:[{source:"#", name:"Test"}], date:"2000-00-00"}];
+		this.meetings = {place:"Secret Place", date:"2000-00-00", description:"Где собираемся, как добираемся?" };
 		this.listOfPeople = [];
 		this.listOfHomewokrs = [];
 		this.listOfLectures = [];
 		this.listOfInfo = [];
+		this.meeting = <IMeeting>this.meetings;
 	}
 	getListOfPeople(){
 		for(let person of this.people){
@@ -48,5 +53,9 @@ export class HttpServiceProvider{
 			this.listOfInfo.push(<IInfo>i);
 		}
 		return this.listOfInfo;
+	}
+	getMeeting(){
+		this.meeting = <IMeeting>this.meetings;
+		return this.meeting;
 	}
 }
