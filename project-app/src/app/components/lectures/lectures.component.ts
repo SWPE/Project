@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LecturesFormComponent } from "./../lectureForm/lecturesForm.component";
+import { HttpServiceProvider } from "./../../services/httpService";
+import { ILecture } from "./../../models/ilecture";
 
 @Component({
 	templateUrl: './lectures.component.html',
-	styleUrls: ['./lectures.component.css']
+	styleUrls: ['./lectures.component.css'],
+	providers:[HttpServiceProvider]
 })
-export class LecturesComponent {
-	lectures = [{subject:"Opi", fileName:"Pres.ppt", source:"#", date:"2000-00-00", description:"Description"}];
+export class LecturesComponent implements OnInit{
+	lectures:ILecture[];
+	constructor(private http: HttpServiceProvider){}
+	ngOnInit(){
+		this.lectures = this.http.getListOfLectures();
+	}
 }
