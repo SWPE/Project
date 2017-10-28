@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from "@angular/http";
 
 import { AppComponent } from "./components/app/app.component";
 import { MainPageComponent } from './components/mainPage/mainPage.component';
@@ -41,10 +40,9 @@ const appRoutes: Routes = [
 		RouterModule.forRoot(
 			appRoutes,
 			{enableTracing: true}
-		),
-		HttpModule
+		)
 	],
-	providers: [MainPageComponent],
+	providers: [],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
