@@ -92,8 +92,14 @@ export class HttpServiceProvider{
 		}
 		return this.listOfInfo;
 	}
-	getMeeting(){
-		this.meeting = <IMeeting>this.meetings;
+	getMeeting(url:string):IMeeting{
+		//this.meeting = <IMeeting>this.meetings;
+		this.getData(this.baseUrl+url).then(response=>{
+			process(response, this);
+		});
+		function process(obj, that){
+			that.meeting = <IMeeting>obj;
+		}
 		return this.meeting;
 	}
 	getData(url:string){

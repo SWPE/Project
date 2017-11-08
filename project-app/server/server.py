@@ -47,4 +47,13 @@ def getInfo():
     resp = flask.Response(json.dumps(result))
     resp.headers['Access-Control-Allow-Origin'] = "*"
     return resp
+@app.route("/getMeeting")
+def getMeeting():
+    result = {}
+    cursor.execute("SELECT * FROM meeting;")
+    for place, date, description in cursor:
+        result = {"place":place, "description":description, "date":date}
+    resp = flask.Response(json.dumps(result))
+    resp.headers['Access-Control-Allow-Origin'] = "*"
+    return resp
 

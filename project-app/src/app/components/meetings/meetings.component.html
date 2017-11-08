@@ -4,9 +4,9 @@
 			<h1>Information about meetings</h1>
 			<article *ngIf="meeting; else noMeeting">
 				<header>
-					<h2>Встреча в Secret Place 2000-00-00</h2>
+					<h2>{{meeting.place}} at {{meeting.date}}</h2>
 				</header>
-				<p>Где собираемся, как добираемся?</p>
+				<p>{{meeting.description}}</p>
 				<p>На встречу идут:</p>
 				<div class="panel-group" id="collapse-group">
 					<div class="panel">
