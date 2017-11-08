@@ -12,6 +12,6 @@ export class MainPageComponent implements OnInit{
 	constructor(private http: HttpServiceProvider){
 	}
 	ngOnInit(){
-		this.people = this.http.getListOfPeople("http://localhost:5000/getPeople");
+		this.people = this.http.getListOfPeople("getPeople");
 	}
 }

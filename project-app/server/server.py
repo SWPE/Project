@@ -23,3 +23,13 @@ def getLectures():
     resp = flask.Response(json.dumps(result))
     resp.headers['Access-Control-Allow-Origin'] = "*"
     return resp
+@app.route("/getHomeworks")
+def getHomeworks():
+    cursor.execute("SELECT * FROM homeworks;")
+    result = []
+    for subject, whenGiven, whenPass, textDescription, fileName, source in cursor:
+        result.append({"subject":subject, "whenGiven":whenGiven, "whenPass":whenPass, "textDescription":textDescription, "fileName":fileName, "source":source});
+    resp = flask.Response(json.dumps(result))
+    resp.headers['Access-Control-Allow-Origin'] = "*"
+    return resp
+
