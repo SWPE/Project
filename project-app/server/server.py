@@ -19,7 +19,7 @@ def getLectures():
     cursor.execute("SELECT * FROM lecturesTable;")
     result = []
     for subject,filename,source,description in cursor:
-        response.append({"subject":subject, "source":source, "fileName":filename,"description":description})
+        result.append({"subject":subject, "source":source, "fileName":filename,"description":description})
     resp = flask.Response(json.dumps(result))
     resp.headers['Access-Control-Allow-Origin'] = "*"
     return resp

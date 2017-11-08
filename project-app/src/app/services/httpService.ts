@@ -30,7 +30,7 @@ export class HttpServiceProvider{
 		this.listOfInfo = [];
 		this.meeting = <IMeeting>this.meetings;
 	}
-	getListOfPeople(url:string){
+	getListOfPeople(url:string):IPerson[]{
 		this.getData(url).then(response =>{
 			process(response, this);
 		});
@@ -48,9 +48,17 @@ export class HttpServiceProvider{
 		}
 		return this.listOfHomewokrs;
 	}
-	getListOfLectures(){
-		for(let l of this.lectures){
+	getListOfLectures(url:string):ILecture[]{
+		/*for(let l of this.lectures){
 			this.listOfLectures.push(<ILecture>l);
+		}*/
+		this.getData(url).then(response=>{
+			process(response, this);
+		});
+		function process(obj, that){
+			for(let i of obj){
+				that.listOfLectures.push(<ILecture>i);
+			}
 		}
 		return this.listOfLectures;
 	}
