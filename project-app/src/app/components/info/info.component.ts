@@ -12,6 +12,6 @@ export class InfoComponent implements OnInit{
 	info:IInfo[];
 	constructor(private http:HttpServiceProvider){}
 	ngOnInit(){
-		this.info = this.http.getListOfInfo();
+		this.info = this.http.getListOfInfo("getInfo");
 	}
 }

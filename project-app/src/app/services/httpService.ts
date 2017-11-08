@@ -72,12 +72,23 @@ export class HttpServiceProvider{
 		}
 		return this.listOfLectures.reverse();
 	}
-	getListOfInfo(){
-		for(let l in this.info.files){
+	getListOfInfo(url:string):IInfo[]{
+		/*for(let l in this.info.files){
 			this.info.files[l] = <IInfoFile>this.info.files[l];
 		}
 		for(let i of this.info){
 			this.listOfInfo.push(<IInfo>i);
+		}*/
+		this.getData(this.baseUrl+url).then(response=>{
+			process(response, this);	
+		});
+		function process(obj, that){
+			for(let i of obj){
+				for(let file in i.files){
+					i.files[file] = <IInfoFile>i.files[file];
+				}
+				that.listOfInfo.push(<IInfo>i);
+			}	
 		}
 		return this.listOfInfo;
 	}
