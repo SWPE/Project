@@ -14,7 +14,9 @@ export class MeetingsComponent implements OnInit{
 	meeting:IMeeting;
 	constructor(private http:HttpServiceProvider){}
 	ngOnInit(){
-		this.people = this.http.getListOfPeople();
-		this.meeting = this.http.getMeeting();
+		this.people = this.http.getListOfPeople("getPeople");
+		let tmp = this.http.getMeeting("getMeeting");
+		if(tmp)
+			this.meeting = tmp;
 	}
 }

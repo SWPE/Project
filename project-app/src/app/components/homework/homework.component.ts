@@ -10,7 +10,7 @@ export class HomeworkComponent implements OnInit{
 	homeworks:IHomework[];
 	constructor(private http: HttpServiceProvider){}
 	ngOnInit(){
-		this.homeworks = this.http.getListOfHomeworks();
+		this.homeworks = this.http.getListOfHomeworks("getHomeworks");
 	}
 	
 }

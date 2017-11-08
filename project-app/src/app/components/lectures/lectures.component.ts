@@ -12,6 +12,6 @@ export class LecturesComponent implements OnInit{
 	lectures:ILecture[];
 	constructor(private http: HttpServiceProvider){}
 	ngOnInit(){
-		this.lectures = this.http.getListOfLectures();
+		this.lectures = this.http.getListOfLectures("getLectures");
 	}
 }
