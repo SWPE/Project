@@ -16,12 +16,21 @@ import { HttpServiceProvider } from "./../../services/httpService";
 })
 export class MeetingsComponent implements OnInit{
 	people:IPerson[];
-	meeting:IMeeting;
+	meeting;
+	display;
 	constructor(private http:HttpServiceProvider){}
 	ngOnInit(){
 		this.people = this.http.getListOfPeople("getPeople");
 		let tmp = this.http.getMeeting("getMeeting");
-		if(tmp)
-			this.meeting = tmp;
+		tmp.then(response=>{
+			let t = <IMeeting>response;
+			for(let i in t){
+				this.meeting[i] = t[i];
+			}
+		});
+		alert(this.meeting);
+	}
+	makePassed(){
+		this.http.remove("removeMeeting")
 	}
 }

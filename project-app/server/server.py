@@ -5,7 +5,7 @@ It gets some urls like "/request" and then do sth with this and returns response
 """
 
 #Core of the server
-from flask import Flask
+from flask import Flask, request, redirect
 import flask
 
 #Object whcih represents db
@@ -14,9 +14,18 @@ import MySQLdb
 #Useful objects
 import json #to send data in json format to front-end
 import hashlib #makes hashes where they are required
+from werkzeug.utils import secure_filename
+import os
+
 
 app = Flask(__name__) #The application itself
+frontEndUrl = "http://127.0.0.1:4200/"
+UPLOAD_FOLDER = './../src/assets/files/'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'ppt'])
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
+def allowed_file(filename):
+        return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def getCursor():
     """
@@ -33,6 +42,9 @@ def closers(cursor, connection):
     """
     cursor.close()
     connection.close()
+
+
+
 
 
 @app.route("/getPeople")
@@ -107,3 +119,51 @@ def getMeeting():
     resp.headers['Access-Control-Allow-Origin'] = "*"
     return resp
 
+@app.route("/uploadLecture", methods=["GET", "POST"])
+def uploadLecture():
+    if request.method == "POST":
+        file = request.files["file"]
+        subject = request.form["subject"]
+        description = request.form["description"]
+        cursor, c = getCursor()
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+            file.save(path)
+            source = frontEndUrl+"assets/files/"+filename
+            cursor.execute('INSERT INTO lecturesTable VALUES("%s", "%s", "%s", "%s")'% (subject, filename, source, description))
+            c.commit()
+            closers(cursor, c)
+            redirectTo = frontEndUrl+"lectures"
+            return redirect(redirectTo)
+
+
+@app.route("/uploadHomework", methods=["GET", "POST"])
+def uploadHomework():
+    if request.method == "POST":
+        file = request.files["file"]
+        subject = request.form["subject"]
+        whenGiven = request.form["whenGiven"]
+        whenPass = request.form["whenPass"]
+        textDescription = request.form["textDescription"]
+        cursor, c = getCursor()
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+            file.save(path)
+            source = frontEndUrl+"assets/files/"+filename
+            if textDescription:
+                cursor.execute('INSERT INTO homeworks VALUES("%s", "%s", "%s", "%s", "%s", "%s");' % (subject, whenGiven, whenPass, textDescription, filename, source))
+            else:
+                cursor.execute('INSERT INTO homeworks (subject, whenGiven, whenPass, fileName, source) VALUES("%s", "%s", "%s", "%s", "%s");' % (subject, whenGiven, whenPass, filename, source))
+            c.commit()
+            closers(cursor, c)
+            redirectTo = frontEndUrl+"homework"
+            return redirect(redirectTo)
+@app.route("/removeMeeting")
+def removeMeeting():
+    cursor, c = getCursor()
+    cursor.execute("DELETE FROM meeting;")
+    c.commit()
+    closers(cursor, c)
+    return redirect(frontEndUrl+"meetings")

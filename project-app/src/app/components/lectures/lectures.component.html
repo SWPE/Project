@@ -20,7 +20,7 @@
 							<tbody>
 								<tr *ngFor="let lecture of lectures">
 									<td><span>{{lecture.subject}}</span></td>
-									<td> <a href={{lecture.source}}>{{lecture.fileName}}</a></td>
+									<td> <a href={{lecture.source}} download={{lecture.fileName}}>{{lecture.fileName}}</a></td>
 									<td> <span>{{lecture.description}}</span></td>
 								</tr>
 							</tbody>

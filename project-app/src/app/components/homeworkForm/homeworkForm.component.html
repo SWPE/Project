@@ -1,23 +1,23 @@
-<form class="form-horizontal" role="form" name="newHomeWork" method="post">
+<form class="form-horizontal" role="form" name="newHomeWork" method="POST" enctype="multipart/form-data" action="http://127.0.0.1:5000/uploadHomework">
 	<div class="form-group">                
 		<label class="control-label col-md-2" for="subject">Subject:</label>
-		<div class="col-md-3"><input class="form-control" type="subject" form="newHomeWork" id="subject" placeholder="Enter the subject"/></div>             
+		<div class="col-md-3"><input class="form-control" required type="subject" form="newHomeWork" name="subject" placeholder="Enter the subject"/></div>             
 	</div> 
 	<div class="form-group">                
 		<label class="control-label col-md-2" for="date">Date of issue:</label>
-		<div class="col-md-3"><input class="form-control" type="date" form="newHomeWork" id="date" placeholder="YYYY-MM-DD" name="whenGiven"/></div>
+		<div class="col-md-3"><input required class="form-control" type="date" form="newHomeWork" placeholder="YYYY-MM-DD" name="whenGiven"/></div>
 	</div>
 	<div class="form-group">                
 		<label class="control-label col-md-2" for="subdate">Submission date:</label>
-		<div class="col-md-3"><input class="form-control" type="date" form="newHomeWork" id="date" placeholder="YYYY-MM-DD" name="whenPass"/></div>          
+		<div class="col-md-3"><input required class="form-control" type="date" form="newHomeWork" placeholder="YYYY-MM-DD" name="whenPass"/></div>          
 	</div>
 	<div class="form-group">                
 		<label class="control-label col-md-2" for="description">Task text(description):</label>                               
-		<div class="col-md-3"><input class="form-control" type="description" form="newHomeWork" id="description" placeholder="Enter the description"/></div>
+		<div class="col-md-3"><input class="form-control" type="description" form="newHomeWork" name="textDescription" placeholder="Enter the description"/></div>
 	</div>
 	<div class="form-group">        
 		<label class="control-label col-md-2" for="file">Attach file:</label>
-		<div class="col-md-3"><input type="file" form="newHomeWork" id="file"/></div>
+		<div class="col-md-3"><input required type="file" form="newHomeWork" name="file"/></div>
 		<button class="btn btn-success" type="submit" form="newHomeWork">Add information                                                                                                </button>                                                       
 	</div>
 </form>

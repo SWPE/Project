@@ -24,11 +24,11 @@ export class HttpServiceProvider{
 	private listOfHomewokrs:IHomework[];
 	private listOfLectures:ILecture[];
 	private listOfInfo:IInfo[];
-	private meeting:IMeeting;
+	private meeting;
 	private baseUrl:string;//Shows where server is located "http(s)://and_so_on"
 	
 	//Some junky data to init
-	private meetings;
+	//private meetings;
 	private info;
 	private lectures;
 	private homework;
@@ -41,12 +41,11 @@ export class HttpServiceProvider{
 		this.homework = [{subject:"OPI", whenGiven:"2000-00-00", whenPass:"2000-00-01", textDescription:"sdasd", fileName:"test.ppt", source:"#"}];
 		this.lectures = [{subject:"Opi", fileName:"Pres.ppt", source:"#", date:"2000-00-00", description:"Description"}];
 		this.info = [{name:"Test", text:"Lorem ipsum", files:[{source:"#", name:"Test"}], date:"2000-00-00"}];
-		this.meetings = {place:"Secret Place", date:"2000-00-00", description:"Где собираемся, как добираемся?" };
+		//this.meetings = {place:"Secret Place", date:"2000-00-00", description:"Где собираемся, как добираемся?" };
 		this.listOfPeople = [];
 		this.listOfHomewokrs = [];
 		this.listOfLectures = [];
 		this.listOfInfo = [];
-		this.meeting = <IMeeting>this.meetings;
 
 		this.baseUrl = "http://localhost:5000/"
 	}
@@ -101,16 +100,16 @@ export class HttpServiceProvider{
 				that.listOfInfo.push(<IInfo>i);
 			}	
 		}
+		alert(this.listOfInfo);
 		return this.listOfInfo;
 	}
-	getMeeting(url:string):IMeeting{
-		this.getData(this.baseUrl+url).then(response=>{
-			process(response, this);
+	getMeeting(url:string):Promise<any>{
+		let p = new Promise((resolve,reject)=>{
+			this.http.get(this.baseUrl+url).subscribe(data=>{
+				resolve(data)
+			}, err=>{reject(err)})
 		});
-		function process(obj, that){
-			that.meeting = <IMeeting>obj;
-		}
-		return this.meeting;
+		return p;
 	}
 	getData(url:string){//Does it look pretty?)
 		/*
@@ -127,5 +126,8 @@ export class HttpServiceProvider{
 				reject(err);
 			});
 		});
+	}
+	remove(url:string){
+		this.getData(this.baseUrl+url);
 	}
 }
