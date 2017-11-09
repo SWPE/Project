@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoFormComponent } from "./../infoForm/infoForm.component";
-import { IInfo, IInfoFile } from "./../../models/iinfo";
+import { IInfo, IInfoFile } from "./../../models/iinfo";/*
+* Looks like:
+* name:string
+* text:string some description of something
+* files:IInfoFile[] it's an array :))
+*
+* IInfo.files looks like:
+* name:string
+* source:string
+*/
 import { HttpServiceProvider } from "./../../services/httpService";
 
 @Component({

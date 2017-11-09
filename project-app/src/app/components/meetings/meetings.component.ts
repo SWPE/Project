@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MeetingsFormComponent } from "./../meetingsForm/meetingsForm.component";
-import { IPerson } from "./../../models/iperson";
-import { IMeeting } from "./../../models/imeeting";
+import { IPerson } from "./../../models/iperson";//I think, if you're here you know how it looks
+import { IMeeting } from "./../../models/imeeting";/*
+* Looks like:
+* place:string You know some restaurant or bar or anything else
+* date:string "YYYY-MM-DD" I think you've seen sth like this before
+* description:string Where each subgroup is meeting and any other useful details
+*/
 import { HttpServiceProvider } from "./../../services/httpService";
 
 @Component({
