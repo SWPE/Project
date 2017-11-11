@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<h1>Info</h1>
+		<p>Здесь размещена разная полезная информация:</p>
+		<div class="panel-group" id="collapse-group">
+			<div class="panel">
+				<div class="panel-heading"><a data-toggle="collapse" data-parent="#collapse-group" href="#el1">List of files</a></div>
+				<div class="collapse" id="el1">
+					<div class="panel-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Info</th>
+									<th>Files</th>
+									<th>Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let data of info">
+									<td> <span>{{data.name}}</span></td>
+									<td><span>{{data.text}}</span></td>
+									<td>
+										<a *ngFor="let file of data.files" href={{file.source}} download={{file.name}}>{{file.name}} </a>
+									</td>
+									<td><span>{{data.date}}</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<info-form></info-form>

@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<h1>Lectures</h1>
+		<p>Here you can find useful information on the following subjects:</p>
+		<div class="panel-group" id="collapse-group">
+			<div class="panel">
+				<div class="panel-heading">
+					<a data-toggle="collapse" data-parent="#collapse-group" href="#el1">List of files</a>
+				</div>
+				<div class="collapse" id="el1">
+					<div class="panel-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Subject</th>
+									<th>File</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let lecture of lectures">
+									<td><span>{{lecture.subject}}</span></td>
+									<td> <a href={{lecture.source}} download={{lecture.fileName}}>{{lecture.fileName}}</a></td>
+									<td> <span>{{lecture.description}}</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<lecture-form></lecture-form>
+</div>

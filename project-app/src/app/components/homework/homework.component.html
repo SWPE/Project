@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row">
+		<h1>Homework</h1>
+		<p>Details of the homework:
+		<div class="panel-group" id="collapse-group">
+			<div class="panel">
+				<div class="panel-heading"><a data-toggle="collapse" data-parent="#collapse-group" href="#el1">List of files</a></div>
+				<div class="collapse" id="el1">
+					<div class="panel-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Subject</th>
+									<th>Date of issue</th>
+									<th>Submission date</th>
+									<th>Task text</th>
+									<th>File</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let hm of homeworks">
+									<td> <span>{{hm.subject}}</span></td>
+									<td><span>{{hm.whenGiven}}</span></td>
+									<td> <span>{{hm.whenPass}}</span></td>
+									<th><span>{{hm.textDescription}}</span></th>
+									<th><a href={{hm.source}} download={{hm.fileName}}>{{hm.fileName}}</a></th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<homework-form></homework-form>
+	</div>
+</div>
+		

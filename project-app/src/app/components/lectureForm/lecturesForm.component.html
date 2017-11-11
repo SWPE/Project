@@ -1,0 +1,23 @@
+<div class="container">
+	<form enctype="multipart/form-data" class="form-horizontal" role="form" name="newLection" method="POST" action="http://127.0.0.1:5000/uploadLecture">
+		<div class="form-group">
+			<label class="control-label col-md-2" for="subject">Subject's Title:</label>
+			<div class="col-md-3">
+				<input class="form-control" type="text" form="newLection" name="subject" placeholder="Enter the title" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2" for="subject">File description:</label>
+			<div class="col-md-3">
+				<input class="form-control" type="description" form="newLection" name="description" placeholder="Enter a description" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2" for="file">Attach file:</label>
+			<div class="col-md-3">
+				<input type="file" form="newLection" id="file" name="file" required/>
+			</div>
+		</div>
+		<button class="btn btn-success" type="submit" form="newLection">Add information</button>
+	</form>
+</div>

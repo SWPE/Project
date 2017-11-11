@@ -6,7 +6,7 @@ block content
 		header
 			.container
 				h1 Information about meetings
-				if meeting/*Uncomment var meeting to see another version of page*/
+				if true/*Uncomment var meeting to see another version of page*/
 					article
 						header
 							h2 Встреча в #{meeting.place} #{meeting.date}
@@ -35,7 +35,7 @@ block content
 																		td No
 													
 						button(name="makePassed").btn.btn-info Отметить как прошедшую
-				else if !meeting
+				if true
 				
 					
 					form(role='form' name="newInfo" method="post").form-horizontal
