@@ -16,14 +16,14 @@ import "rxjs/add/operator/map";
   providers: [HttpServiceProvider]
 })
 export class MeetingsComponent implements OnInit{
-	people:IPerson[];
-	private check;
+	private people;
 	private meeting;
-	private promise;
-	display = "downloading";
+	private display = "downloading";
 	constructor(private http:HttpClient, private https:HttpServiceProvider){}
 	ngOnInit(){
-		this.people = this.https.getListOfPeople("getPeople");
+		this.https.getData("getPeople").then(data => {
+			this.people = data;
+		});
 		new Promise((resolve,reject)=>{
 			this.http.get("http://localhost:5000/getMeeting").subscribe(data => {
 				resolve(data);
@@ -37,7 +37,7 @@ export class MeetingsComponent implements OnInit{
 
 	}
 	makePassed(){
-		this.https.remove("removeMeeting");
+		this.http.get("http://127.0.0.1:5000/removeMeeting").subscribe(data=>data);
 		location.reload(true);
 	}
 }

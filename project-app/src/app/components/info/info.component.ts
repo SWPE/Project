@@ -18,9 +18,11 @@ import { HttpServiceProvider } from "./../../services/httpService";
   providers:[HttpServiceProvider]
 })
 export class InfoComponent implements OnInit{
-	info:IInfo[];
+	info;
 	constructor(private http:HttpServiceProvider){}
 	ngOnInit(){
-		this.info = this.http.getListOfInfo("getInfo");
+		this.http.getData("getInfo").then(data => {
+			this.info = data;
+		});
 	}
 }

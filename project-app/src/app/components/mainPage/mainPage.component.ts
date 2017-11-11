@@ -17,10 +17,12 @@ import { OnInit } from "@angular/core";//Used to catch onInit event
   providers:[HttpServiceProvider]
 })
 export class MainPageComponent implements OnInit{
-	people: IPerson[];//Array which contains each person of the group
+	people;//Array which contains each person of the group
 	constructor(private http: HttpServiceProvider){//defining its own provider
 	}
 	ngOnInit(){
-		this.people = this.http.getListOfPeople("getPeople");//Get people
+		this.http.getData("getPeople").then(data => {
+			this.people = data;
+		});
 	}
 }

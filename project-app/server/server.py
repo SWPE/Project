@@ -20,7 +20,7 @@ import os
 
 app = Flask(__name__) #The application itself
 frontEndUrl = "http://127.0.0.1:4200/"
-UPLOAD_FOLDER = './../src/assets/files/'
+UPLOAD_FOLDER = './files'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'ppt'])
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
@@ -167,3 +167,29 @@ def removeMeeting():
     c.commit()
     closers(cursor, c)
     return redirect(frontEndUrl+"meetings")
+
+
+@app.route("/uploadInfo", methods=["GET", "POST"])
+def uploadInfo():
+    if request.method == "POST":
+        import datetime
+        d = datetime.datetime.now()
+        date = "%s-%s-%s" % (d.year, d.month, d.day)
+        files = request.files.getlist("files")
+        name = request.form["name"]
+        text = request.form["name"]
+        hash = hashlib.md5(b"%s" % text.encode("utf-8")).hexdigest()
+        cursor, c = getCursor()
+        cursor.execute('INSERT INTO info VALUES("%s", "%s", "%s", "%s")' % (name, text, hash, date))
+        for file in files:
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+                file.save(path)
+                source = frontEndUrl+"assets/files/"+filename
+                cursor.execute('INSERT INTO infoFiles VALUES("%s", "%s", "%s")' % (filename, source, hash))
+        c.commit()
+        closers(cursor, c)
+        return redirect(frontEndUrl+"info")
+
+

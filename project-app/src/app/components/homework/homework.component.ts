@@ -15,10 +15,12 @@ import { HttpServiceProvider } from "./../../services/httpService";
   providers:[HttpServiceProvider]
 })
 export class HomeworkComponent implements OnInit{
-	homeworks:IHomework[];
+	homeworks;
 	constructor(private http: HttpServiceProvider){}
 	ngOnInit(){
-		this.homeworks = this.http.getListOfHomeworks("getHomeworks");
+		this.http.getData("getHomeworks").then(data => {
+			this.homeworks = data;
+		});
 	}
 	
 }

@@ -15,9 +15,11 @@ import { ILecture } from "./../../models/ilecture";/*
 	providers:[HttpServiceProvider]
 })
 export class LecturesComponent implements OnInit{
-	lectures:ILecture[];
+	lectures;
 	constructor(private http: HttpServiceProvider){}
 	ngOnInit(){
-		this.lectures = this.http.getListOfLectures("getLectures");
+		this.http.getData("getLectures").then(data => {
+			this.lectures = data;
+		});
 	}
 }
