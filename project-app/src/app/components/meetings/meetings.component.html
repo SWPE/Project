@@ -2,7 +2,9 @@
 	<header>
 		<div class="container">
 			<h1>Information about meetings</h1>
-			<article *ngIf="display; else noMeeting">
+			<div *ngIf="display==='downloading'; else got">Downloading</div>
+			<ng-template #got>
+			<article *ngIf="display==='downloaded'; else noMeeting">
 				<header>
 					<h2>{{meeting.place}} at {{meeting.date}}</h2>
 				</header>
@@ -38,6 +40,7 @@
 				</div>
 				<button class="btn btn-info" name="makePassed" (click)="makePassed()">Отметить как прошедшую</button>
 			</article>
+			</ng-template>
 			<ng-template #noMeeting>
 				<meeting-form></meeting-form>
 			</ng-template>

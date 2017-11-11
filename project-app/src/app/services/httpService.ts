@@ -130,4 +130,10 @@ export class HttpServiceProvider{
 	remove(url:string){
 		this.getData(this.baseUrl+url);
 	}
+	test(){
+		this.http.get(this.baseUrl+"getMeeting").subscribe(data => {
+			this.meeting = data;
+		});
+		console.log("asdadas"+this.meeting);
+	}
 }
