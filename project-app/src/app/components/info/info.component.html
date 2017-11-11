@@ -21,7 +21,7 @@
 									<td> <span>{{data.name}}</span></td>
 									<td><span>{{data.text}}</span></td>
 									<td>
-										<a *ngFor="let file of data.files" href={{file.source}}>{{file.name}} </a>
+										<a *ngFor="let file of data.files" href={{file.source}} download={{file.name}}>{{file.name}} </a>
 									</td>
 									<td><span>{{data.date}}</span></td>
 								</tr>

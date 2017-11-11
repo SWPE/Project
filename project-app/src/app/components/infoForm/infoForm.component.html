@@ -1,21 +1,21 @@
-<form class="form-horizontal" role="form" name="newInfo" method="post">
+<form class="form-horizontal" role="form" name="newInfo" method="POST" enctype="multipart/form-data" action="http://127.0.0.1:5000/uploadInfo">
 	<p>Add new information:</p>
 	<div class="form-group">
 		<label class="control-label col-md-2" for="info">Info Name:</label>
 		<div class="col-md-3">
-			<input class="form-control" type="info" form="newInfo" id="info" placeholder="Enter the info" />
+			<input class="form-control" type="info" form="newInfo" name="name" placeholder="Enter the info" />
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-md-2" for="info">Text info:</label>
 		<div class="col-md-5">
-			<textarea class="form-control" type="info" form="newInfo" id="info" placeholder="Enter the text info"></textarea>
+			<textarea class="form-control" type="info" form="newInfo" name="text" placeholder="Enter the text info"></textarea>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-md-2" for="info">Add File(s):</label>
 		<div class="col-md-2">
-			<input type="file" name="fileDotName" form="newInfo" />
+			<input type="file" name="files" form="newInfo" multiple/>
 		</div>
 	</div>
 	<!--TODO make for lots of files-->
